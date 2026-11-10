@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Types de vol</label>
+        <select class="form-control form-control-lg" id="idType" name="idType" [(ngModel)]="IdType"
+            (change)="onChange()">
+            @for (t of types; track t.idType) {
+            <option value="{{t.idType}}"> {{t.nomType}} </option>
+            }
+        </select>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th><th>N° Vol</th><th>Compagnie</th><th>Destination</th><th>Type</th><th>Prix billet</th><th>Date départ</th>
+                </tr>
+                @for (vol of vols; track vol.idVol) {
+                <tbody>
+                    <tr>
+                        <td>{{vol.idVol}}</td>
+                        <td>{{vol.numeroVol}}</td>
+                        <td>{{vol.compagnie}}</td>
+                        <td>{{vol.destination}}</td>
+                        @if (vol.type) {
+                        <td>{{vol.type.nomType}}</td>
+                        } @else {
+                        <td>PAS DE TYPE</td>
+                        }
+                        <td>{{vol.prixBillet}} DT</td>
+                        <td>{{vol.dateDepart | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

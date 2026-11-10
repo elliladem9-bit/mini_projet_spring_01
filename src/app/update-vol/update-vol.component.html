@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="card shadow">
+    <div class="card-body">
+      <h2>Modifier un vol :</h2>
+      <form (ngSubmit)="updateVol()">
+        <div class="mb-3">
+          <label class="form-label">Id Vol</label>
+          <input type="text" class="form-control" name="idVol"
+                 [(ngModel)]="currentVol.idVol" readonly>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Numéro du vol</label>
+          <input type="text" class="form-control" name="numeroVol"
+                 [(ngModel)]="currentVol.numeroVol">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Compagnie</label>
+          <input type="text" class="form-control" name="compagnie"
+                 [(ngModel)]="currentVol.compagnie">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Destination</label>
+          <input type="text" class="form-control" name="destination"
+                 [(ngModel)]="currentVol.destination">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Type de vol</label>
+          <select class="form-select" name="idType" [(ngModel)]="updatedIdType">
+            @for (t of types; track t.idType) {
+              <option [ngValue]="t.idType">{{ t.nomType }}</option>
+            }
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Prix du billet</label>
+          <input type="number" class="form-control" name="prixBillet"
+                 [(ngModel)]="currentVol.prixBillet">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Date de départ</label>
+          <input type="date" class="form-control" name="dateDepart"
+                 [ngModel]="currentVol.dateDepart | date:'yyyy-MM-dd'"
+                 (ngModelChange)="currentVol.dateDepart = $event">
+        </div>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="d-flex align-items-center mt-3 mb-3">
+        <label class="me-2">Destination en tapant</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control w-auto">
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th><th>N° Vol</th><th>Compagnie</th><th>Destination</th><th>Type</th><th>Prix billet</th><th>Date départ</th>
+                </tr>
+                @for (vol of vols | searchFilter: searchTerm; track vol.idVol) {
+                <tbody>
+                    <tr>
+                        <td>{{vol.idVol}}</td>
+                        <td>{{vol.numeroVol}}</td>
+                        <td>{{vol.compagnie}}</td>
+                        <td>{{vol.destination}}</td>
+                        @if (vol.type) {
+                        <td>{{vol.type.nomType}}</td>
+                        } @else {
+                        <td>PAS DE TYPE</td>
+                        }
+                        <td>{{vol.prixBillet}} DT</td>
+                        <td>{{vol.dateDepart | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

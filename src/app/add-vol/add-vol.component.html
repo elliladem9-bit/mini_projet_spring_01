@@ -1,0 +1,42 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Vol :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Vol</label>
+            <input type="number" [(ngModel)]="newVol.idVol" name="idVol" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Numéro du vol</label>
+            <input type="text" [(ngModel)]="newVol.numeroVol" name="numeroVol" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Compagnie</label>
+            <input type="text" [(ngModel)]="newVol.compagnie" name="compagnie" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Destination</label>
+            <input type="text" [(ngModel)]="newVol.destination" name="destination" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Type de vol</label>
+            <select [(ngModel)]="newIdType" name="idType" class="form-control">
+                @for (t of types; track t.idType) {
+                <option [ngValue]="t.idType">{{t.nomType}}</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix billet</label>
+            <input type="number" [(ngModel)]="newVol.prixBillet" name="prixBillet" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date départ</label>
+            <input type="date" [(ngModel)]="newVol.dateDepart" name="dateDepart" class="form-control">
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addVol()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
